@@ -1,0 +1,48 @@
+{
+    "tabs" : {
+        "one"   : {
+            "html"  : "Dies ist die erste Registerkarte",
+            "title" : "ersten"
+        },
+        "two"   : {
+            "html"  : "Dies ist die zweite Registerkarte",
+            "title" : "zweite"
+        },
+        "three" : {
+            "html"  : "Dies ist das dritte Registerkarte",
+            "title" : "dritte"
+        }
+    },
+    "buttons" : {
+        "cancel" : "Abbrechen",
+        "save"   : "Speichern",
+        "done"   : "Fertig"
+    },
+    "misc" : {
+        "bottomTitle"   : "unteren Symbolleiste",
+        "loadLocaleMsg" : "Laden ..."
+    },
+    "fields" : {
+        "name" : "Nom",
+        "dateLabel" : "Datum",
+        "datePlaceholder" : "Datum wählen"
+    },
+    "fieldsets" : {
+        "title" : "Titel",
+        "instructions" : "Eingabeanweisungen"
+    },
+    "months" : {
+        "1"  : "Januar",
+        "2"  : "Februar",
+        "3"  : "Marz",
+        "4"  : "Avril",
+        "5"  : "Mai",
+        "6"  : "Juni",
+        "7"  : "Juli",
+        "8"  : "August",
+        "9"  : "September",
+        "10" : "Oktober",
+        "11" : "November",
+        "12" : "Dezember"
+    }
+}
