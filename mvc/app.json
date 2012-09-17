@@ -39,6 +39,21 @@
             "path": "app/app.js",
             "bundle": true,  /* Indicates that all class dependencies are concatenated into this file when build */
             "update": "all"
+        },
+        {
+            "path": "lib/plugin/google/Traffic.js",
+            "bundle": true,
+            "update": "all"
+        },
+        {
+            "path": "lib/plugin/google/Tracker.js",
+            "bundle": true,
+            "update": "all"
+        },
+        {
+            "path": "http://maps.google.com/maps/api/js?sensor=true",
+            "bundle": true,
+            "update": "all"
         }
     ],
 
