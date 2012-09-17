@@ -11,4 +11,3 @@ Ext.define "Locale.controller.Main",
       rec = store.findRecord("text", value)
       value = rec.get(field.getValueField())
     Ux.locale.Manager.updateLocale value
-
