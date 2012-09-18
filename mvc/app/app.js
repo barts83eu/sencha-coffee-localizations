@@ -6,8 +6,9 @@
     Ux: "../Ux"
   });
 
-    // pettracker
-/**  Ext.Loader.setConfig({
+  // pettracker
+  /**
+  Ext.Loader.setConfig({
     enabled: true
   });*/
 
@@ -53,10 +54,13 @@
     },
     phoneStartupScreen: "resources/loading/Homescreen.jpg",
     tabletStartupScreen: "resources/loading/Homescreen~ipad.jpg",
+    /**
+      2 apps merged petfinder and Locales
+    */
     launch: function() {
 
 
-      alert('pet finder');
+      // alert('pet finder');
       // petFinder
       var petList = {
             xtype: 'petListPanel'
@@ -67,7 +71,7 @@
         var radiusPicker = {
             xtype: 'radiusPicker'
         };
-      Ext.Viewport.add([petList, petMap, radiusPicker]);
+
 
 
       // locale app
@@ -82,7 +86,9 @@
       });
       Ux.locale.Manager.init();
       Ext.fly("appLoadingIndicator").destroy();
-      return Ext.Viewport.add(Ext.create("Locale.view.Main"));
+
+      Ext.Viewport.add([petList, petMap, radiusPicker]);
+      return Ext.Viewport.add(Ext.create("Locale.view.Main"));  // do we need to include this view if it wasnt created ?
 
 
     },
@@ -94,19 +100,25 @@
       });
     },
 
-
     // Transitions
     slideLeftTransition: { type: 'slide', direction: 'left' },
     slideRightTransition: { type: 'slide', direction: 'right' },
 
+    /**
+
+
+    */
     onPetSelected: function (list, record) {
         var mapView = this.getPetMap();
         mapView.setRecord(record);
         Ext.Viewport.animateActiveItem(mapView, this.slideLeftTransition);
-
         this.renderMap(mapView, mapView.down("#petMap").getMap(), record.data);
     },
 
+    /**
+
+
+    */
     onBackButton: function () {
         console.log("Back to home");
         var store = Ext.getStore('PetTracker');
@@ -115,9 +127,16 @@
         Ext.Viewport.animateActiveItem(this.getPetListPanel(), this.slideRightTransition);
     },
 
+    /**
+
+    */
     onNear: function() {
         this.getRadiusPicker().show();
     },
+
+    /**
+
+    */
     onPickerRadiusChange: function(picker, pickerValue) {
         var store = Ext.getStore('PetTracker');
         var gmap = this.getPetMap().down("#petMap");
@@ -142,9 +161,11 @@
                   }
               }
         });
-
     },
 
+    /**
+
+    */
     renderMap: function (extmap, map, record) {
         // erase old markers
         if (this.markers.length > 0) {
@@ -184,6 +205,9 @@
         geo.suspendUpdates();
     },
 
+    /**
+      google api
+    */
     plotRoute: function (map, orig, dest) {
         this.directionsDisplay.setMap(map);
 
@@ -202,10 +226,6 @@
         });
 
     }
-
-
-
-
 
   });
 

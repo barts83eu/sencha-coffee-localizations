@@ -1,20 +1,3 @@
-/*
- * Copyright (c) 2012., Qualcomm, Inc.
- *
- *    Licensed under the Apache License, Version 2.0 (the "License");
- *    you may not use this file except in compliance with the License.
- *
- *    You may obtain a copy of the License at
- *
- *        http://www.apache.org/licenses/LICENSE-2.0
- *
- *    Unless required by applicable law or agreed to in writing, software
- *    distributed under the License is distributed on an "AS IS" BASIS,
- *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *    See the License for the specific language governing permissions and
- *    limitations under the License.
- */
-
 Ext.define('Locale.view.PetPanel', {
     extend:'Ext.Panel',
     alias: 'widget.petListPanel',
@@ -26,7 +9,29 @@ Ext.define('Locale.view.PetPanel', {
             {
                 xtype:'toolbar',
                 docked:'top',
-                title:'DogTag'
+                title:'Locale + PetFinder ',
+                items: [
+                    {
+                        xtype: 'button',
+                        text: 'yoo',
+                        id: 'yo'
+                    },
+                    {
+                        xtype: 'spacer'
+                    },
+                    {
+                        xtype: "selectfield",
+                        id: "localePicker",
+                        align: "right",
+                        displayField: "text",
+                        valueField: "abbr",
+                        value: "en",
+                        store: {
+                          fields: ["abbr", "text"],
+                          data: Ux.locale.Manager.getAvailable(true)
+                        }
+                    }
+                ]
             },
             {
                 xtype:'list',
@@ -34,22 +39,39 @@ Ext.define('Locale.view.PetPanel', {
                 id:'PetList',
                 itemId:'petList',
                 emptyText: "<div>No Dogs Found</div>",
-//                onItemDisclosure: true,
+                //  onItemDisclosure: true,
                 loadingText: "Loading Pets",
                 itemTpl:[
                     '<div>{name} is a {description} and is located at {latitude} (latitude) and {longitude} (longitude)</div>'
                 ]
             }
         ],
+        // why having listeners the whole panel ?
         listeners:[
             {
                 fn:'onPetsListItemTap',
                 event:'itemtap',
                 delegate:'#PetList'
+            },
+            {
+                fn: 'onYooTap',
+                event:'tap',
+                delegate: '#yo'
+            },
+            {
+                fn: 'onLocalePick',
+                event: 'tap',
+                delegate: '#localePicker'
             }
         ]
     },
     onPetsListItemTap:function (dataview, index, target, record, e, options) {
         this.fireEvent('petSelectCommand', this, record);
+    },
+    onYooTap: function () {
+        alert('clicked yooo');
+    },
+    onLocalePick: function() {
+        alert('pick locale');
     }
 });
